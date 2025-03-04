@@ -1,0 +1,37 @@
+{% extends 'layout/main.html' %} {% load static %} {% block body %}
+
+<!-- product section -->
+<section class="product_section layout_padding">
+  <div class="container">
+    <div class="heading_container heading_center">
+      <h2>Our <span>products</span></h2>
+    </div>
+    <div class="row">
+      {% for i in pdct%}
+      <div class="col-sm-6 col-md-4 col-lg-4">
+        <div class="box">
+          <div class="option_container">
+            <div class="options">
+              <a href="{% url 'productview' i.c.slug i.slug %}" class="option2">
+                view
+              </a>
+            </div>
+          </div>
+          <div class="img-box">
+            <img src="{{i.product_image.url}}" alt="" />
+          </div>
+          <div class="detail-box">
+            <h5>{{i.name}}</h5>
+            <h6>₹{{i.selling_price}}</h6>
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+    <div class="btn-box">
+      <a href=""> View All products </a>
+    </div>
+  </div>
+</section>
+<!-- end product section -->
+{% endblock body %}
